@@ -59,7 +59,8 @@ public class PracticeFormTest {
         elementMethods.selectElementFromListByText(genderElement,"Female");
 
 
-//        WebElement subjectsField = driver.findElement(By.id("subjectsInput"));
+        WebElement subjectsField = driver.findElement(By.id("subjectsInput"));
+        elementMethods.fillElement(subjectsField,"Social Studies");
 //        String subjectsValue = "Social Studies";
 //        subjectsField.sendKeys(subjectsValue);
 //        subjectsField.sendKeys(Keys.ENTER);
@@ -76,7 +77,6 @@ public class PracticeFormTest {
 //
 //        WebElement submitElement = driver.findElement(By.id("submit"));
 //        js.executeScript("arguments[0].click();", submitElement);
-
 
 
     }
