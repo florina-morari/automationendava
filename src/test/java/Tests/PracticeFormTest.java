@@ -77,47 +77,6 @@ public class PracticeFormTest {
 //        WebElement submitElement = driver.findElement(By.id("submit"));
 //        js.executeScript("arguments[0].click();", submitElement);
 
-//        Map<String, String> labelValue = new HashMap<>();
-//        labelValue.put("Student Name", addFirstNameValue + " " + addLastNameValue);
-//        labelValue.put("Student Email", addEmailValue);
-//        labelValue.put("Gender ", Gender);
-//        labelValue.put("Mobile ", addMobileValue);
-//        labelValue.put("Date of Birth ", 	"16 January,2024");
-//        labelValue.put("Subjects ", subjectsValue);
-//        labelValue.put("Hobbies ", " ");
-//        labelValue.put("Picture ", file.getAbsolutePath());
-//        labelValue.put("Address ", " ");
-//        labelValue.put("State and City ", stateField + " " + cityField);
-//
-//        List<WebElement> submittedPracticeFormElements = driver.findElements(By.xpath("//table[@class='table table-dark table-striped table-bordered table-hover']/tbody/tr"));
-//        for(int i = 0; i < submittedPracticeFormElements.size() - 1; i++) {
-//            String expectedTableValue = submittedPracticeFormElements.get(i).getText();
-//
-//            String key = labelValue.get(i);
-//            String actualValue = labelValue.get(key);
-//            Assert.assertTrue(expectedTableValue.contains(key));
-//            Assert.assertTrue(expectedTableValue.contains(actualValue));
-//
-//        }
-
-//
-//        List<WebElement> submittedPracticeFormElements = driver.findElements(By.xpath("//table[@class='table table-dark table-striped table-bordered table-hover']/tbody/tr"));
-//
-//        for (int i = 0; i < submittedPracticeFormElements.size() - 1; i++) {
-//            WebElement webElement = submittedPracticeFormElements.get(i);
-//            String actualTableValue = webElement.getText();
-//            System.out.println(actualTableValue);
-//            Assert.assertTrue(actualTableValue.contains("Student Name " + addFirstNameValue + " " + addLastNameValue));
-//            Assert.assertTrue(actualTableValue.contains("Student Email " + addEmailValue));
-//            Assert.assertTrue(actualTableValue.contains("Gender " + Gender));
-//            Assert.assertTrue(actualTableValue.contains("Mobile " + addMobileValue));
-//            Assert.assertTrue(actualTableValue.contains("Date of Birth " + 	"16 January,2024"));
-//            Assert.assertTrue(actualTableValue.contains("Subjects " + subjectsValue));
-//            Assert.assertTrue(actualTableValue.contains("Hobbies " + " "));
-//            Assert.assertTrue(actualTableValue.contains("Picture " + file.getAbsolutePath()));
-//            Assert.assertTrue(actualTableValue.contains("Address " + " "));
-//            Assert.assertTrue(actualTableValue.contains("State and City " + stateField + " " + cityField));
-//        }
 
 
     }
