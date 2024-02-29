@@ -1,72 +1,77 @@
 package Tests;
 
+import ShareData.ShareData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.CommonPage;
+import pages.HomePage;
 
 import java.util.List;
 
-public class WebTableTest {
-    public WebDriver driver;
+public class WebTableTest  extends ShareData {
+//    public WebDriver driver;
+//    public ElementsMethods elementMethods;
+//    public JavaScriptMethods javaScriptMethods;
+    public HomePage homePage;
+    public CommonPage commonPage;
 
     @Test
     public void automationMethod() {
         //deschidem un browser de chrome
-        driver = new ChromeDriver();
-        //accesam o pagina web
-        driver.get("https://demoqa.com/");
-        //maximize browser
-        driver.manage().window().maximize();
+//        driver = new ChromeDriver();
+//        //accesam o pagina web
+//        driver.get("https://demoqa.com/");
+//        //maximize browser
+//        driver.manage().window().maximize();
+//
+//        elementMethods = new ElementsMethods(driver);
+//        javaScriptMethods = new JavaScriptMethods(driver);
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
+
+        homePage.goToDesiredMenu("Elements");
+        commonPage.goToDesiredSubMenu("Web Tables");
         //declaram un element
-        WebElement elementsField = driver.findElement(By.xpath("//h5[text()='Elements']"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,400)"); //x=0,y=400 (axa)
-        elementsField.click();
 
-        WebElement elementsTable = driver.findElement(By.xpath("//span[text()='Web Tables']"));
-        elementsTable.click();
-
-        List<WebElement> tableElements = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
+        List<WebElement> tableElements = getDriver().findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
         Integer actualTableSize = tableElements.size();
         System.out.println("Size-ul este: " + actualTableSize);
 
 
-        WebElement addNewEntry = driver.findElement(By.id("addNewRecordButton"));
+        WebElement addNewEntry = getDriver().findElement(By.id("addNewRecordButton"));
         addNewEntry.click();
 
-        WebElement addFirstName = driver.findElement(By.id("firstName"));
+        WebElement addFirstName = getDriver().findElement(By.id("firstName"));
         String addFirstNameValue = "Lee";
         addFirstName.sendKeys(addFirstNameValue);
 
-        WebElement addLastName = driver.findElement(By.id("lastName"));
+        WebElement addLastName = getDriver().findElement(By.id("lastName"));
         String addLastNameValue = "Jay-Wook";
         addLastName.sendKeys(addLastNameValue);
 
-        WebElement addEmail = driver.findElement(By.id("userEmail"));
+        WebElement addEmail = getDriver().findElement(By.id("userEmail"));
         String addEmailValue = "Lee.Jay-Wook@email.com";
         addEmail.sendKeys(addEmailValue);
 
-        WebElement addAge = driver.findElement(By.id("age"));
+        WebElement addAge = getDriver().findElement(By.id("age"));
         String addAgeValue = "32";
         addAge.sendKeys(addAgeValue);
 
-        WebElement addSalary = driver.findElement(By.id("salary"));
+        WebElement addSalary = getDriver().findElement(By.id("salary"));
         String addSalaryValue = "22000";
         addSalary.sendKeys(addSalaryValue);
 
-        WebElement addDepartment = driver.findElement(By.id("department"));
+        WebElement addDepartment = getDriver().findElement(By.id("department"));
         String addDepartmentValue = "IT";
         addDepartment.sendKeys(addDepartmentValue);
 
-        WebElement submitNewEntry = driver.findElement(By.id("submit"));
+        WebElement submitNewEntry = getDriver().findElement(By.id("submit"));
         submitNewEntry.click();
 
 
-        List<WebElement> expectedTableElements = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
+        List<WebElement> expectedTableElements = getDriver().findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
 
         Integer expectedTableSize = actualTableSize + 1;
         Assert.assertEquals(expectedTableElements.size(), expectedTableSize);

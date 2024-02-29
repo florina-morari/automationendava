@@ -1,78 +1,55 @@
 package Tests;
 
-import HelperMethods.AlertMethods;
-import HelperMethods.ElementsMethods;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import ShareData.ShareData;
 import org.testng.annotations.Test;
+import pages.AlertsPage;
+import pages.CommonPage;
+import pages.HomePage;
 
-import java.time.Duration;
+public class AlertTest extends ShareData {
 
-public class AlertTest {
-    public WebDriver driver;
-    public ElementsMethods elementMethods;
-    public AlertMethods alertMethods;
+//    public ElementsMethods elementMethods;
+//    public AlertMethods alertMethods;
+//    public JavaScriptMethods javaScriptMethods;
+    public HomePage homePage;
+    public CommonPage commonPage;
+    public AlertsPage alertsPage;
 
     @Test
     public void automationMethod() {
-        //deschidem un browser de chrome
-        driver = new ChromeDriver();
-        //accesam o pagina web
-        driver.get("https://demoqa.com/");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        //maximize browser
-        driver.manage().window().maximize();
 
-        elementMethods = new ElementsMethods(driver);
-        alertMethods = new AlertMethods(driver);
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
+        alertsPage = new AlertsPage(getDriver());
+//        alertsPage = new AlertsPage(driver);
+        homePage.goToDesiredMenu("Alerts, Frame & Windows");
+        commonPage.goToDesiredSubMenu("Alerts");
 
-        WebElement elementsField = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,400)"); //x=0,y=400 (axa)
-        elementMethods.clickOnElements(elementsField);
+        // Alert simplu: Doar Text si OK button
+//        WebElement alertOKElement = driver.findElement(By.id("alertButton"));
+//        elementMethods.clickOnElements(alertOKElement);
+//        alertMethods.interractWithAlertsOK();
+        alertsPage.interactWithSimpleAlert();
 
+        // Alert cu delay la afisare
+//        WebElement alertDelayElement = driver.findElement(By.id("timerAlertButton"));
+//        elementMethods.clickOnElements(alertDelayElement);
+       //definim un wait explicit ca sa astepte dupa alerta
+//        alertMethods.interractWithDelayAlert();
+        alertsPage.interactWithDelayedAlert();
 
-        WebElement alertElement = driver.findElement(By.xpath("//span[text()='Alerts']"));
-        elementMethods.clickOnElements(alertElement);
-
-
-        WebElement alertOKElement = driver.findElement(By.id("alertButton"));
-        elementMethods.clickOnElements(alertOKElement);
-
-        alertMethods.interractWithAlertsOK();
-
-
-        WebElement alertDelayElement = driver.findElement(By.id("timerAlertButton"));
-        elementMethods.clickOnElements(alertDelayElement);
-
-//
-//        //definim un wait explicit ca sa astepte dupa alerta
-        alertMethods.interractWithDelayAlert();
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.alertIsPresent());
-//
-//        Alert alertDelay = driver.switchTo().alert();
-//        alertDelay.accept();
-
-//
+        // Alert cu Confirm - OK/cancel
 //        WebElement confirmElement = driver.findElement(By.id("confirmButton"));
-//       confirmElement.click();
-//
-//        Alert alertConfirm = driver.switchTo().alert();
-//        alertConfirm.dismiss();
-//
+//        elementMethods.clickOnElements(confirmElement);
+//        alertMethods.interactWithAlertDismiss();
+        alertsPage.interactWithConfirmAlert(true);
+
+        // Alert cu Prompt Text
 //        WebElement alertPromtElement = driver.findElement(By.id("promtButton"));
-//        alertPromtElement.click();
-//
-//        Alert alertPromt = driver.switchTo().alert();
-//        alertPromt.sendKeys("test");
-//        alertPromt.accept();
-//
-//
-//
+//        elementMethods.clickOnElements(alertPromtElement);
+//        alertMethods.interactWithPromptAlertOK("Test Alert Promt OK");
+        alertsPage.interactWithPromptAlert("Test Alert Promt OK", true);
+//        driver.quit();
 
     }
 }
