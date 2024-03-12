@@ -1,27 +1,44 @@
 package Tests;
 
+import ShareData.ShareData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
+import pages.CommonPage;
+import pages.HomePage;
 
 import java.util.List;
 
-public class InteractionsFormTest {
-    public WebDriver driver;
+public class InteractionsFormTest extends ShareData {
+//    public WebDriver driver;
+//    public ElementsMethods elementMethods;
+//    public JavaScriptMethods javaScriptMethods;
+    public HomePage homePage;
+    public CommonPage commonPage;
+
 
     @Test
     public void parcurgereListaMethod()  {
+        //deschidem un browser de chrome
+//        driver = new ChromeDriver();
+//        //accesam o pagina web
+//        driver.get("https://demoqa.com/");
+//        //maximize browser
+//        driver.manage().window().maximize();
+//        elementMethods = new ElementsMethods(driver);
+//        javaScriptMethods = new JavaScriptMethods(driver);
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
 
-        driver = new ChromeDriver();
 
-        driver.get("https://demoqa.com/sortable");
+        //declaram un element
+        homePage.goToDesiredMenu("Interactions");
+        commonPage.goToDesiredSubMenu("Sortable");
 
-        driver.manage().window().maximize();
-        Actions actions= new Actions (driver);
-        List <WebElement> list = driver.findElements(By.xpath("//div[@id='demo-tabpane-list']//div[@class='list-group-item list-group-item-action']"));
+//        driver.manage().window().maximize();
+        Actions actions= new Actions (getDriver());
+        List<WebElement> list = getDriver().findElements(By.xpath("//div[@id='demo-tabpane-list']//div[@class='list-group-item list-group-item-action']"));
         for (int i=0; i<list.size()-1; i++){
             WebElement webElement = list.get(i);
             WebElement nextWebElement = list.get(i+1);

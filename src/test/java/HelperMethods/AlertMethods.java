@@ -31,4 +31,21 @@ public class AlertMethods {
         Alert alertDelay = driver.switchTo().alert();
         alertDelay.accept();
     }
+
+    public void interactWithAlertDismiss() {
+        // ne mutam cu focusul pe alerta deschisa
+        Alert alert = driver.switchTo().alert();
+        alert.dismiss();
+    }
+
+        public void interactWithPromptAlertOK(String text) {
+        Alert alert = driver.switchTo().alert();
+        alert.sendKeys(text);
+        alert.accept();
+    }
+    public void interactWithPromptAlertAndCancel(String text) {
+        Alert alert = driver.switchTo().alert();
+        alert.sendKeys(text);
+        alert.dismiss();
+    }
 }
