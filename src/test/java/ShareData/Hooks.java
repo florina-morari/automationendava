@@ -16,9 +16,9 @@ public class Hooks {
     @BeforeMethod
     public void prepareEnvironment(){
         testName = this.getClass().getSimpleName();
-        LoggerUtility.startTestCase(testName);
+//        LoggerUtility.startTestCase(testName);
         ExtentUtility.createTest(testName);
-        prepareBrowser();
+//        prepareBrowser();
 
     }
 
