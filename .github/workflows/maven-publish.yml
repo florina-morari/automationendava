@@ -11,7 +11,7 @@ on:
        required: true
        default: RegressionSuite
        browser:
-         description: 'Choose automation suite: chrome, edge, firefox'
+         description: 'Choose browser suite: chrome, edge, firefox'
          required: true
          default: chrome
 

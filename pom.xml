@@ -73,10 +73,10 @@
             </build>
         </profile>
     </profiles>
-        <build>
-    <pluginManagement>
-        <plugins>
-            <plugin>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
